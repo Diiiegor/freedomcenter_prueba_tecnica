@@ -39,4 +39,13 @@ li.page-item.active span{
     padding-right: 30px;
 }
 
+.container-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+
+.container-form__main{
+    width: 60%;
+}

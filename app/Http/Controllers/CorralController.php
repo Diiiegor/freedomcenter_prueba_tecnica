@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Corral;
+use App\Http\Requests\CorralRequest;
 use Illuminate\Http\Request;
 
 class CorralController extends Controller
@@ -34,9 +35,13 @@ class CorralController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CorralRequest $request)
     {
-        //
+        Corral::create([
+            'nombre'=>$request->nombre,
+            'capacidad_maxima'=>$request->capacidad_maxima
+        ]);
+        return redirect(route('corral.index'));
     }
 
     /**
