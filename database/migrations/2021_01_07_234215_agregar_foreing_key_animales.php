@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaAnimales extends Migration
+class AgregarForeingKeyAnimales extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CrearTablaAnimales extends Migration
      */
     public function up()
     {
-        Schema::create('animales',function (Blueprint $table){
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('corral_id');
-            $table->string('nombre',100);
-            $table->timestamps();
+        Schema::table('animales',function (Blueprint $table){
+            $table->foreign('corral_id')->references('id')->on('corrales');
         });
     }
 
@@ -28,6 +25,8 @@ class CrearTablaAnimales extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('animales');
+        Schema::table('animales',function (Blueprint $table){
+            $table->dropForeign('corral_id');
+        });
     }
 }
