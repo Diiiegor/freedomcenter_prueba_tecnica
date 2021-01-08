@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Corral;
 use Illuminate\Http\Request;
 
 class CorralController extends Controller
@@ -13,7 +14,8 @@ class CorralController extends Controller
      */
     public function index()
     {
-        //
+        $corrales = Corral::paginate(10);
+        return view('corrales.index', ['corrales' => $corrales]);
     }
 
     /**
@@ -23,13 +25,13 @@ class CorralController extends Controller
      */
     public function create()
     {
-        //
+        return view('corrales.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,7 +42,7 @@ class CorralController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,7 +53,7 @@ class CorralController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,8 +64,8 @@ class CorralController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -74,7 +76,7 @@ class CorralController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
