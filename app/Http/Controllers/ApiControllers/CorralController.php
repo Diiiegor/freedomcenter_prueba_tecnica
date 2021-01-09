@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\ApiControllers;
 
 use App\Corral;
-use App\Http\Requests\CorralRequest;
+use App\Http\Requests\ApiCorralRequest;
 use App\Http\Controllers\Controller;
 
 class CorralController extends Controller
@@ -12,42 +12,32 @@ class CorralController extends Controller
     public function index()
     {
         $corrales = Corral::paginate(10);
-        return view('corrales.index', ['corrales' => $corrales]);
+        return response()->json($corrales, 200);
     }
 
 
-    public function create()
-    {
-        return view('corrales.create');
-    }
-
-
-    public function store(CorralRequest $request)
+    public function store(ApiCorralRequest $request)
     {
         Corral::create([
-            'nombre'=>$request->nombre,
-            'capacidad_maxima'=>$request->capacidad_maxima
+            'nombre' => $request->nombre,
+            'capacidad_maxima' => $request->capacidad_maxima
         ]);
-        return redirect(route('corral.index'));
+        return response()->json(['data' => ['resp' => 'Corral creado correctamente']]);
     }
 
 
-
-
-    public function edit($id)
+    public function update(ApiCorralRequest $request, $id)
     {
         $corral = Corral::findOrFail($id);
-        return view('corrales.edit',['corral'=>$corral]);
-    }
-
-
-    public function update(CorralRequest $request, $id)
-    {
-        $corral = Corral::findOrFail($id);
-        $corral->nombre=$request->nombre;
-        $corral->capacidad_maxima=$request->capacidad_maxima;
+        $corral->nombre = $request->nombre;
+        $corral->capacidad_maxima = $request->capacidad_maxima;
         $corral->save();
-        return back();
+        return response()->json(['data' => ['resp' => 'Corral actualizado correctamente']]);
+    }
+
+    public function show($id){
+        $corral = Corral::findOrFail($id);
+        return response()->json(['data'=>$corral],200);
     }
 
 }
