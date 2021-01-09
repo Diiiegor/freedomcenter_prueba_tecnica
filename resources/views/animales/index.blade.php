@@ -25,7 +25,7 @@
                     <td>{{$animal->tipo_animal->nombre}}</td>
                     <td>{{$animal->corral->nombre}}</td>
                     <td>
-                        <a href="{{route('corral.edit',$animal)}}">
+                        <a href="{{route('animal.edit',$animal)}}">
                             <label class="btn btn-dark btn-label" for="">editar</label>
                         </a>
                     </td>

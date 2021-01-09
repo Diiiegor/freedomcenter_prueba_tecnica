@@ -72,7 +72,15 @@ class AnimalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $corrales = Corral::all();
+        $tipos_animales = TipoAnimal::all();
+        $animal = Animal::with(['corral','tipo_animal'])->findOrFail($id);
+
+        return view('animales.edit', [
+            'corrales' => $corrales,
+            'tipos_animales' => $tipos_animales,
+            'animal' => $animal,
+        ]);
     }
 
     /**
@@ -82,9 +90,14 @@ class AnimalController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AnimalRequest $request, $id)
     {
-        //
+        $animal = Animal::findOrFail($id);
+        $animal->corral_id=$request->corral;
+        $animal->id_tipo_animal=$request->tipo_animal;
+        $animal->nombre=$request->nombre;
+        $animal->save();
+        return back();
     }
 
     /**
