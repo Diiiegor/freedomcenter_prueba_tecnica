@@ -63,7 +63,8 @@ class CorralController extends Controller
      */
     public function edit($id)
     {
-        //
+        $corral = Corral::findOrFail($id);
+        return view('corrales.edit',['corral'=>$corral]);
     }
 
     /**
@@ -73,9 +74,13 @@ class CorralController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CorralRequest $request, $id)
     {
-        //
+        $corral = Corral::findOrFail($id);
+        $corral->nombre=$request->nombre;
+        $corral->capacidad_maxima=$request->capacidad_maxima;
+        $corral->save();
+        return back();
     }
 
     /**

@@ -49,3 +49,9 @@ li.page-item.active span{
 .container-form__main{
     width: 60%;
 }
+
+
+.btn-label{
+    padding: 1px 2px 1px 2px;
+    font-size: 11px;
+}
