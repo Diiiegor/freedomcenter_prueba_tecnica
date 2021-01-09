@@ -17,6 +17,7 @@ class CrearTablaTiposAnimales extends Migration
         Schema::create('tipos_animales',function (Blueprint $table){
             $table->bigIncrements('id');
             $table->string('nombre',100);
+            $table->timestamps();
         });
 
         DB::table('tipos_animales')->insert([

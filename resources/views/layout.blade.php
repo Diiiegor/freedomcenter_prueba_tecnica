@@ -34,6 +34,9 @@
                     <a class="nav-link {{(request()->is('animales')) ? 'active' : ''}}" href="">Animales</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{(request()->is('tipo_animal')) ? 'active' : ''}}" href="{{route('tipo_animal.index')}}">Tipos de animales</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{(request()->is('animales')) ? 'active' : ''}}" href="">Reporte</a>
                 </li>
             </ul>
