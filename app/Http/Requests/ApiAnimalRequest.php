@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 
-class AnimalRequest extends FormRequest
+class ApiAnimalRequest extends BaseApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +23,12 @@ class AnimalRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required',
-            'corral'=>'required',
-            'tipo_animal'=>'required',
-            'edad'=>'required|numeric'
+            'nombre' => 'required',
+            'corral' => 'required',
+            'tipo_animal' => 'required',
+            'edad' => 'required|numeric'
         ];
     }
+
 
 }

@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('corral', 'CorralController')->only(['index', 'create', 'store', 'edit', 'update']);
-Route::resource('tipo_animal', 'TipoAnimalController')->only(['index', 'create', 'store', 'edit', 'update']);
-Route::resource('animal', 'AnimalController')->only(['index', 'create', 'store', 'edit', 'update']);
-Route::get('reporte', 'ReporteController')->name('reporte');
+Route::resource('corral', 'WebControllers\CorralController')->only(['index', 'create', 'store', 'edit', 'update']);
+Route::resource('tipo_animal', 'WebControllers\TipoAnimalController')->only(['index', 'create', 'store', 'edit', 'update']);
+Route::resource('animal', 'WebControllers\AnimalController')->only(['index', 'create', 'store', 'edit', 'update']);
+Route::get('reporte', 'WebControllers\ReporteController')->name('reporte');

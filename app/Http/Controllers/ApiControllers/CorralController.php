@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ApiControllers;
 
-use App\Animal;
-use App\Http\Requests\TipoAnimalRequest;
-use App\TipoAnimal;
+use App\Corral;
+use App\Http\Requests\CorralRequest;
 use Illuminate\Http\Request;
 
-class TipoAnimalController extends Controller
+class CorralController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class TipoAnimalController extends Controller
      */
     public function index()
     {
-        $tipos_animales = TipoAnimal::paginate(10);
-        return view('tipo_animal.index', ['tipos_animales' => $tipos_animales]);
+        $corrales = Corral::paginate(10);
+        return view('corrales.index', ['corrales' => $corrales]);
     }
 
     /**
@@ -27,7 +26,7 @@ class TipoAnimalController extends Controller
      */
     public function create()
     {
-        return view('tipo_animal.create');
+        return view('corrales.create');
     }
 
     /**
@@ -36,10 +35,13 @@ class TipoAnimalController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TipoAnimalRequest $request)
+    public function store(CorralRequest $request)
     {
-        TipoAnimal::create(['nombre' => $request->nombre]);
-        return redirect(route('tipo_animal.index'));
+        Corral::create([
+            'nombre'=>$request->nombre,
+            'capacidad_maxima'=>$request->capacidad_maxima
+        ]);
+        return redirect(route('corral.index'));
     }
 
 
@@ -52,8 +54,8 @@ class TipoAnimalController extends Controller
      */
     public function edit($id)
     {
-        $tipo_animal = TipoAnimal::findOrFail($id);
-        return view('tipo_animal.edit', ['tipo_animal' => $tipo_animal]);
+        $corral = Corral::findOrFail($id);
+        return view('corrales.edit',['corral'=>$corral]);
     }
 
     /**
@@ -63,11 +65,12 @@ class TipoAnimalController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TipoAnimalRequest $request, $id)
+    public function update(CorralRequest $request, $id)
     {
-        $tipo_animal = TipoAnimal::findOrFail($id);
-        $tipo_animal->nombre = $request->nombre;
-        $tipo_animal->save();
+        $corral = Corral::findOrFail($id);
+        $corral->nombre=$request->nombre;
+        $corral->capacidad_maxima=$request->capacidad_maxima;
+        $corral->save();
         return back();
     }
 
