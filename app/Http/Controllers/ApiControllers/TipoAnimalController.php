@@ -2,20 +2,13 @@
 
 namespace App\Http\Controllers\ApiControllers;
 
-use App\Animal;
 use App\Http\Requests\ApiTipoAnimalRequest;
-use App\Http\Requests\TipoAnimalRequest;
 use App\Http\Controllers\Controller;
 use App\TipoAnimal;
-use Illuminate\Http\Request;
 
 class TipoAnimalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $tipos_animales = TipoAnimal::paginate(10);
@@ -24,12 +17,7 @@ class TipoAnimalController extends Controller
 
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(ApiTipoAnimalRequest $request)
     {
         TipoAnimal::create(['nombre' => $request->nombre]);
@@ -43,13 +31,7 @@ class TipoAnimalController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(ApiTipoAnimalRequest $request, $id)
     {
         $tipo_animal = TipoAnimal::findOrFail($id);
