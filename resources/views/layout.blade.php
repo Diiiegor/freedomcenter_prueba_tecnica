@@ -37,7 +37,7 @@
                     <a class="nav-link {{(request()->is('tipo_animal')) ? 'active' : ''}}" href="{{route('tipo_animal.index')}}">Tipos de animales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{(request()->is('animales')) ? 'active' : ''}}" href="">Reporte</a>
+                    <a class="nav-link {{(request()->is('animales')) ? 'active' : ''}}" href="{{route('reporte')}}" target="_blank">Reporte</a>
                 </li>
             </ul>
         </div>

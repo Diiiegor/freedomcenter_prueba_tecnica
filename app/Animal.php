@@ -8,6 +8,7 @@ class Animal extends Model
 {
     protected $table = 'animales';
     protected $fillable=['corral_id', 'id_tipo_animal', 'nombre'];
+    const ALTA_PRELIGROSIDAD =1;
 
     public function corral(){
         return $this->belongsTo(Corral::class);

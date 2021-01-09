@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::resource('corral', 'CorralController');
 Route::resource('tipo_animal', 'TipoAnimalController');
 Route::resource('animal', 'AnimalController');
+Route::get('reporte', 'ReporteController')->name('reporte');
