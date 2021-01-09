@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('corral','CorralController');
+Route::resource('corral', 'CorralController');
