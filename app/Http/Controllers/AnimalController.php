@@ -48,7 +48,8 @@ class AnimalController extends Controller
         Animal::create([
             'corral_id' => $request->corral,
             'id_tipo_animal' => $request->tipo_animal,
-            'nombre'=>$request->nombre
+            'nombre'=>$request->nombre,
+            'edad'=>$request->edad
         ]);
         return redirect(route('animal.index'));
     }
@@ -96,6 +97,7 @@ class AnimalController extends Controller
         $animal->corral_id=$request->corral;
         $animal->id_tipo_animal=$request->tipo_animal;
         $animal->nombre=$request->nombre;
+        $animal->edad=$request->edad;
         $animal->save();
         return back();
     }

@@ -95,7 +95,7 @@
                             <td>{{$animal->id}}</td>
                             <td>{{$animal->nombre}}</td>
                             <td>{{$animal->tipo_animal->nombre}}</td>
-                            <td>12</td>
+                            <td>{{$animal->edad}}</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -26,7 +26,8 @@ class AnimalRequest extends FormRequest
         return [
             'nombre'=>'required',
             'corral'=>'required',
-            'tipo_animal'=>'required'
+            'tipo_animal'=>'required',
+            'edad'=>'required|numeric'
         ];
     }
 }

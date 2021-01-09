@@ -50,6 +50,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="row m-3 align-items-center d-flex justify-content-center">
+                                <h5 class="d-flex justify-content-center">Edad</h5>
+                                <div class="col-auto ">
+                                    <input name="edad" value="{{old('edad')}}" type="number" class="form-control">
+                                </div>
+                            </div>
                             <div class="col-auto  d-flex justify-content-center m-3">
                                 <button class="btn btn-dark" type="submit">Guardar Animal</button> &nbsp;
                                 <a class="btn btn-outline-dark" href="{{route('animal.index')}}"
