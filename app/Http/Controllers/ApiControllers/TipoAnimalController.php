@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ApiControllers;
 
 use App\Animal;
+use App\Http\Requests\ApiTipoAnimalRequest;
 use App\Http\Requests\TipoAnimalRequest;
 use App\TipoAnimal;
 use Illuminate\Http\Request;
@@ -17,18 +18,10 @@ class TipoAnimalController extends Controller
     public function index()
     {
         $tipos_animales = TipoAnimal::paginate(10);
-        return view('tipo_animal.index', ['tipos_animales' => $tipos_animales]);
+        return response()->json($tipos_animales,200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('tipo_animal.create');
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,25 +29,18 @@ class TipoAnimalController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TipoAnimalRequest $request)
+    public function store(ApiTipoAnimalRequest $request)
     {
         TipoAnimal::create(['nombre' => $request->nombre]);
-        return redirect(route('tipo_animal.index'));
+        return response()->json(['resp'=>'Tipo de animal creado correctamente'],200);
     }
 
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $tipo_animal = TipoAnimal::findOrFail($id);
-        return view('tipo_animal.edit', ['tipo_animal' => $tipo_animal]);
+    public function show($id){
+        $tipoAnimal = TipoAnimal::findOrFail($id);
+        return response()->json(['data'=>$tipoAnimal],200);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -63,12 +49,12 @@ class TipoAnimalController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TipoAnimalRequest $request, $id)
+    public function update(ApiTipoAnimalRequest $request, $id)
     {
         $tipo_animal = TipoAnimal::findOrFail($id);
         $tipo_animal->nombre = $request->nombre;
         $tipo_animal->save();
-        return back();
+        return response()->json(['resp'=>'Tipo de animal actualizado correctamente'],200);
     }
 
 }
