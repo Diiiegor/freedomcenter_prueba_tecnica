@@ -6,6 +6,8 @@ use App\Animal;
 use App\Http\Requests\TipoAnimalRequest;
 use App\TipoAnimal;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class TipoAnimalController extends Controller
 {

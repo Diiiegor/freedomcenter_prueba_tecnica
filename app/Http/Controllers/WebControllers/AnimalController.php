@@ -6,6 +6,7 @@ use App\Animal;
 use App\Corral;
 use App\Http\Requests\AnimalRequest;
 use App\TipoAnimal;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AnimalController extends Controller

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ApiControllers;
 use App\Animal;
 use App\Http\Requests\ApiTipoAnimalRequest;
 use App\Http\Requests\TipoAnimalRequest;
+use App\Http\Controllers\Controller;
 use App\TipoAnimal;
 use Illuminate\Http\Request;
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\WebControllers;
 
 use App\Corral;
 use App\Http\Requests\CorralRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CorralController extends Controller

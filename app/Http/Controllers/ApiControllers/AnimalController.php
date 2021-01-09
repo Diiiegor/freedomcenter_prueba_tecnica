@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\ApiControllers;
 
 use App\Animal;
+use App\Http\Controllers\Controller;
+
 use App\Http\Requests\ApiAnimalRequest;
 
 
