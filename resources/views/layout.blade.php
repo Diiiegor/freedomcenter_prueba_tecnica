@@ -31,7 +31,7 @@
                     <a class="nav-link {{(request()->is('corral')) ? 'active' : ''}}" href="{{route('corral.index')}}">Corrales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{(request()->is('animales')) ? 'active' : ''}}" href="{{route('animal.index')}}">Animales</a>
+                    <a class="nav-link {{(request()->is('animal')) ? 'active' : ''}}" href="{{route('animal.index')}}">Animales</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{(request()->is('tipo_animal')) ? 'active' : ''}}" href="{{route('tipo_animal.index')}}">Tipos de animales</a>

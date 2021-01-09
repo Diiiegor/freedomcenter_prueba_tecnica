@@ -33,14 +33,20 @@
                                 <div class="col-auto ">
                                     <select name="corral" id="corral" class="form-control">
                                         <option value="">Seleccione un corral</option>
+                                        @foreach($corrales as $corral)
+                                            <option value="{{$corral->id}}">{{$corral->nombre}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="row m-3 align-items-center d-flex justify-content-center">
                                 <h5 class="d-flex justify-content-center">Tipo de animal</h5>
                                 <div class="col-auto ">
-                                    <select name="tipo" id="tipo" class="form-control">
+                                    <select name="tipo_animal" id="tipo_animal" class="form-control">
                                         <option value="">Seleccione un tipo de animal</option>
+                                        @foreach($tipos_animales as $tipo)
+                                            <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

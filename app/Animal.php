@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Animal extends Model
 {
     protected $table = 'animales';
+    protected $fillable=['corral_id', 'id_tipo_animal', 'nombre'];
 
     public function corral(){
         return $this->belongsTo(Corral::class);

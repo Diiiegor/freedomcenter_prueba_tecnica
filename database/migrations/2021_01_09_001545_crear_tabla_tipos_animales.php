@@ -20,10 +20,8 @@ class CrearTablaTiposAnimales extends Migration
             $table->timestamps();
         });
 
-        DB::table('tipos_animales')->insert([
-            'id'=>1,
-            'nombre'=>'Animal peligroso'
-        ]);
+        DB::table('tipos_animales')->insert(['id'=>1, 'nombre'=>'Animal peligroso']);
+        DB::table('tipos_animales')->insert(['id'=>2, 'nombre'=>'Otro']);
     }
 
     /**

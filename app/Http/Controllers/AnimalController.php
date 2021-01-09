@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Animal;
+use App\Corral;
+use App\Http\Requests\AnimalRequest;
+use App\TipoAnimal;
 use Illuminate\Http\Request;
 
 class AnimalController extends Controller
@@ -14,8 +17,8 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $animales = Animal::with(['corral','tipo_animal'])->paginate(10);
-        return view('animales.index',['animales'=>$animales]);
+        $animales = Animal::with(['corral', 'tipo_animal'])->paginate(10);
+        return view('animales.index', ['animales' => $animales]);
     }
 
     /**
@@ -25,24 +28,35 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        return view('animales.create');
+        $corrales = Corral::all();
+        $tipos_animales = TipoAnimal::all();
+
+        return view('animales.create', [
+            'corrales' => $corrales,
+            'tipos_animales' => $tipos_animales
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnimalRequest $request)
     {
-        //
+        Animal::create([
+            'corral_id' => $request->corral,
+            'id_tipo_animal' => $request->tipo_animal,
+            'nombre'=>$request->nombre
+        ]);
+        return redirect(route('animal.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -53,7 +67,7 @@ class AnimalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -64,8 +78,8 @@ class AnimalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -76,7 +90,7 @@ class AnimalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
