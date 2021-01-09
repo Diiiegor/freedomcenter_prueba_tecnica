@@ -14,7 +14,6 @@ class CrearForeingKeyAnimalesTipoDeAnimales extends Migration
     public function up()
     {
         Schema::table('animales',function(Blueprint $table){
-            $table->unsignedBigInteger('id_tipo_animal');
             $table->foreign('id_tipo_animal')->references('id')->on('tipos_animales');
         });
     }

@@ -9,10 +9,10 @@ class Animal extends Model
     protected $table = 'animales';
 
     public function corral(){
-        return $this->hasOne('Corral','id','id_corral');
+        return $this->belongsTo(Corral::class);
     }
 
     public function tipo_animal(){
-        return $this->hasOne('TipoAnimal','id','id_tipo_animal');
+        return $this->belongsTo(TipoAnimal::class,'id_tipo_animal','id','id_tipo_animal');
     }
 }

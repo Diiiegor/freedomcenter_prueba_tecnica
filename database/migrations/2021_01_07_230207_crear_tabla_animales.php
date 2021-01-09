@@ -16,6 +16,7 @@ class CrearTablaAnimales extends Migration
         Schema::create('animales',function (Blueprint $table){
             $table->bigIncrements('id');
             $table->unsignedBigInteger('corral_id');
+            $table->unsignedBigInteger('id_tipo_animal');
             $table->string('nombre',100);
             $table->timestamps();
         });
