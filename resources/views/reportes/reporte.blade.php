@@ -77,7 +77,7 @@
     @if(count($corral->animales)>0)
         <section>
             <div class="section--header">
-                CORRAL: <b>{{$corral->nombre}}</b> - EDAD  PROMEDIO DE ANIMALES (AÑOS): <b>{{edad_promedio($corral->id)}}</b>
+                CORRAL: <b>{{$corral->nombre}}</b> - EDAD  PROMEDIO DE ANIMALES: <b>{{edad_promedio($corral->id)}} AÑOS</b>
             </div>
             <div class="section--body">
                 <table class="table">
