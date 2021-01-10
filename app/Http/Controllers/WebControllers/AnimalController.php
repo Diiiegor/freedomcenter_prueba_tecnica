@@ -32,13 +32,21 @@ class AnimalController extends Controller
 
     public function store(AnimalRequest $request)
     {
-        Animal::create([
-            'corral_id' => $request->corral,
-            'id_tipo_animal' => $request->tipo_animal,
-            'nombre' => $request->nombre,
-            'edad' => $request->edad
-        ]);
-        return redirect(route('animal.index'));
+        $corral = Corral::with('animales')->findOrFail($request->corral);
+        if ($corral->capacidad_maxima > count($corral->animales)){
+            Animal::create([
+                'corral_id' => $request->corral,
+                'id_tipo_animal' => $request->tipo_animal,
+                'nombre' => $request->nombre,
+                'edad' => $request->edad
+            ]);
+            return redirect(route('animal.index'));
+        } else{
+            return back()->withErrors(['El corral esta en su capacidad límite']);
+        }
+
+
+
     }
 
 

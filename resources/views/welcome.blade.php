@@ -30,7 +30,7 @@
                                 <td>{{$animal->id}}</td>
                                 <td>{{$animal->nombre}}</td>
                                 <td>{{$animal->edad}}</td>
-                                <td>{{$animal->id}}</td>
+                                <td>{{$animal->tipo_animal->nombre}}</td>
                             </tr>
                         @endforeach
                         </tbody>
