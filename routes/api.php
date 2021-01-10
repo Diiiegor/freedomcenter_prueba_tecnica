@@ -18,3 +18,4 @@ Route::resource('corral', 'ApiControllers\CorralController')->only(['index', 'st
 Route::resource('tipo_animal', 'ApiControllers\TipoAnimalController')->only(['index', 'store', 'update','show']);
 Route::resource('animal', 'ApiControllers\AnimalController')->only(['index', 'store', 'update','show']);
 Route::get('corral/{id}/animales','ApiControllers\CorralController@traerAnimales');
+Route::get('corral-all','ApiControllers\CorralController@all');

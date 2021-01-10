@@ -44,4 +44,8 @@ class CorralController extends Controller
         return Corral::with('animales')->findOrFail($id);
     }
 
+    public function all(){
+        return Corral::with('animales')->get();
+    }
+
 }

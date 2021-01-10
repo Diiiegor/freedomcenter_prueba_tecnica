@@ -13,12 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',function (){
-    $corrales = \App\Corral::all();
-    $animales = $corrales[0]->id?\App\Animal::all()->where('corral_id',$corrales[0]->id):[];
-    return view('welcome',['corrales'=>$corrales,'animales'=>$animales]);
-});
-
+Route::get('/','DashboardController@index');
 Route::resource('corral', 'WebControllers\CorralController')->only(['index', 'create', 'store', 'edit', 'update']);
 Route::resource('tipo_animal', 'WebControllers\TipoAnimalController')->only(['index', 'create', 'store', 'edit', 'update']);
 Route::resource('animal', 'WebControllers\AnimalController')->only(['index', 'create', 'store', 'edit', 'update']);
