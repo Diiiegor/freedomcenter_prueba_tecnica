@@ -34,10 +34,12 @@
                     <a class="nav-link {{(request()->is('animal')) ? 'active' : ''}}" href="{{route('animal.index')}}">Animales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{(request()->is('tipo_animal')) ? 'active' : ''}}" href="{{route('tipo_animal.index')}}">Tipos de animales</a>
+                    <a class="nav-link {{(request()->is('tipo_animal')) ? 'active' : ''}}"
+                       href="{{route('tipo_animal.index')}}">Tipos de animales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{(request()->is('animales')) ? 'active' : ''}}" href="{{route('reporte')}}" target="_blank">Reporte</a>
+                    <a class="nav-link {{(request()->is('animales')) ? 'active' : ''}}" href="{{route('reporte')}}"
+                       target="_blank">Reporte</a>
                 </li>
             </ul>
         </div>
@@ -47,6 +49,7 @@
 
 
 </div>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="{{asset('js/dashboard.js')}}"></script>
 </body>
 </html>
