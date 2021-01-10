@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::resource('corral', 'ApiControllers\CorralController')->only(['index', 'store', 'update','show']);
 Route::resource('tipo_animal', 'ApiControllers\TipoAnimalController')->only(['index', 'store', 'update','show']);
 Route::resource('animal', 'ApiControllers\AnimalController')->only(['index', 'store', 'update','show']);
+Route::get('corral/{id}/animales','ApiControllers\CorralController@traerAnimales');

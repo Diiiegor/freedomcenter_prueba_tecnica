@@ -40,4 +40,8 @@ class CorralController extends Controller
         return response()->json(['data'=>$corral],200);
     }
 
+    public function traerAnimales($id){
+        return Corral::with('animales')->findOrFail($id);
+    }
+
 }

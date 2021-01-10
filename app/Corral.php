@@ -14,4 +14,5 @@ class Corral extends Model
     }
 
 
+
 }

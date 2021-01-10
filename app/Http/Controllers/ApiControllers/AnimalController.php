@@ -42,7 +42,7 @@ class AnimalController extends Controller
 
     public function show($id)
     {
-        $animal = Animal::findOrFail($id);
+        $animal = Animal::with(['corral','tipo_animal'])->findOrFail($id);
         return response()->json(['data' => $animal], 200);
     }
 
